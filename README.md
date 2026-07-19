@@ -85,17 +85,30 @@ failure modes worth studying concentrate in the harder strata.
 
 ```
 data/
-  bird/          downloaded dataset (gitignored)
-  traces/        generated outputs, JSONL (committed)
-  labels/        hand labels (committed — these are the expensive artifact)
+  bird/                        downloaded dataset (gitignored)
+  traces/                      generated outputs, JSONL (committed)
+  labels/                      hand labels (committed — the expensive artifact)
 src/
-  schema.py      dataset loading + DDL extraction
-  sample.py      stratified sampling
-  generate.py    candidate SQL generation with cost/latency instrumentation
+  schema.py                    dataset loading + DDL extraction        [phase 0]
+  sample.py                    stratified sampling                     [phase 0]
+  generate.py                  candidate SQL + cost instrumentation    [phase 0]
+  execute.py                   run SQL, capture result sets            [phase 2]
+  grade_exec.py                result-set comparison                   [phase 2]
+  judge.py                     LLM-as-judge                            [phase 3]
+  stats.py                     judge validation + prevalence correction[phase 3]
+notebooks/
+  01_open_coding.ipynb                                                 [phase 1]
+  02_exec_disagreement.ipynb                                           [phase 2]
+  03_judge_validation.ipynb                                            [phase 3]
+annotate/
+  app.py                       Streamlit labeling UI                   [phase 3]
+tests/
+  test_regression.py           fails on significant degradation        [phase 4]
 ```
 
-`execute.py`, `grade_exec.py`, `judge.py`, `stats.py`, the annotation app, and
-the notebooks arrive with their respective phases.
+Directories are scaffolded; the files land with their phases. The notebooks
+exist as labeled placeholders so the shape of the argument is visible from
+day one.
 
 ## Notes on method
 
