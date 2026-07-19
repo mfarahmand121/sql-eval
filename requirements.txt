@@ -1,0 +1,10 @@
+anthropic>=0.70
+pandas
+pydantic
+pytest
+streamlit
+scipy
+numpy
+
+# Phase 3 (Bayesian prevalence correction) — uncomment when you get there.
+# numpyro

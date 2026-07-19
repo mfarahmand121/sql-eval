@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+
+# Datasets are large and redistributable from bird-bench.github.io — not committed.
+data/bird/
+
+# Generated traces are committed (see README), but scratch runs are not.
+data/traces/scratch/
