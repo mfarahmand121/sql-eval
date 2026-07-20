@@ -6,5 +6,9 @@ streamlit
 scipy
 numpy
 
+# Notebooks. SQLite needs nothing — it's in the Python stdlib.
+ipykernel
+jupyter
+
 # Phase 3 (Bayesian prevalence correction) — uncomment when you get there.
 # numpyro
